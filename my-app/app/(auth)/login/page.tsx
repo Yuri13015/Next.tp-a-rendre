@@ -1,7 +1,3 @@
-const LoginPage = () => {
-    return (
-        <div>LoginPage</div>
-    )
+export default function Page() {
+    return <>Login</>
 }
-
-export default LoginPage

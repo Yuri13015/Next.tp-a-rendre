@@ -4,7 +4,7 @@ interface BlogLayoutProps {
     children: ReactNode; 
 }
 
-const BlogLayout: React.FC<BlogLayoutProps> = ({ children }) => {
+const BlogLayout: React.FC<BlogLayoutProps> = ({ children }: {children: React.ReactNode}) => {
     return (
         <div>
             <h2>BlogLayout</h2>
