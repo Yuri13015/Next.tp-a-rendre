@@ -1,15 +1,15 @@
 import Link from "next/link";
-
+import Links from "./links/Links";
 
 const Navbar = () => {
     return (
-        <><div>Logo</div><div>
-            <Link href="/">Homepage</Link>
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
-
-        </div></>
+        <div className="flex items-center justify-between h-25 (or h-[100px] for specific height)">
+            <div className="text-3xl font-bold">Logo</div>
+            <div>
+                <Links />
+            </div>
+        </div>
     )
 }
 
-export default Navbar
+export default Navbar;
