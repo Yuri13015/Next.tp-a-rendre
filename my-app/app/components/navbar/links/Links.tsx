@@ -25,7 +25,9 @@ const NavLink: FC<{ item: NavLinkItem }> = ({ item }) => {
   return (
     <Link
       href={item.path}
-      className={`min-w-[100px] p-2.5 rounded-lg font-medium text-center ${pathName === item.path ? 'bg-[var(--text)] text-[var(--bg)]' : ''} hover:bg-opacity-75 transition-colors`}
+      className={`min-w-[120px] p-2.5 rounded-lg font-medium text-center ${
+        pathName === item.path ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-200'
+      } transition-colors duration-300 ease-in-out`}
     >
       {item.title}
     </Link>
@@ -55,33 +57,36 @@ const Links: FC<LinksProps> = ({ session }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div>
-      <div className="flex items-center gap-2.5">
+    <div className="relative">
+      <nav className="hidden md:flex items-center gap-4">
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
         {session?.user ? (
           <>
             {session.user.isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
-           
+            {/* Logout button or link should go here */}
           </>
         ) : (
           <NavLink item={{ title: "Login", path: "/login" }} />
         )}
+      </nav>
+      <div className="md:hidden">
+        <Image
+          src="/menu.png"
+          alt="Menu"
+          width={30}
+          height={30}
+          onClick={() => setOpen(!open)}
+          className="cursor-pointer"
+        />
       </div>
-      <Image
-        src="/menu.png"
-        alt="Menu"
-        width={30}
-        height={30}
-        onClick={() => setOpen(!open)}
-        className="cursor-pointer md:hidden"
-      />
       {open && (
-        <div className="absolute top-[100px] right-0 w-1/2 h-[calc(100vh-100px)] bg-[var(--bg)] flex flex-col items-center justify-center gap-2.5 md:hidden">
+        <div className="absolute top-full right-0 z-10 w-full bg-white flex flex-col items-center justify-center gap-2.5 p-4 shadow-lg">
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
           ))}
+          {/* Add logout or login link for mobile menu */}
         </div>
       )}
     </div>
