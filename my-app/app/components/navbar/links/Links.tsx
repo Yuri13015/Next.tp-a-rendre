@@ -4,7 +4,6 @@ import { useState, FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-//import { handleLogout } from "@/lib/action";
 
 interface NavLinkItem {
   title: string;
@@ -65,7 +64,7 @@ const Links: FC<LinksProps> = ({ session }) => {
         {session?.user ? (
           <>
             {session.user.isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
-            {/* Logout button or link should go here */}
+            {}
           </>
         ) : (
           <NavLink item={{ title: "Login", path: "/login" }} />
@@ -86,7 +85,7 @@ const Links: FC<LinksProps> = ({ session }) => {
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
           ))}
-          {/* Add logout or login link for mobile menu */}
+          {}
         </div>
       )}
     </div>
