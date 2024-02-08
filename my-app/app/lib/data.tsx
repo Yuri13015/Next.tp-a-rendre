@@ -8,8 +8,8 @@ export default async function SearchUsers(){
 
         const tableUsers = sql<Users>`
         SELECT *
-        FROM users
-        ORDER BY users.name DESC;
+        FROM customers
+        ORDER BY customers.name DESC;
         `;
 
         return (await tableUsers).rows;
